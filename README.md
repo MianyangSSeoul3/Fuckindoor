@@ -1,6 +1,6 @@
 # Fuckindoor
 > ## When you click the door, a specific sound is played. 
-> > ## No delay lol
+> ## No delay lol
 ![](image.png)
 
  * This program is free software: you can redistribute it and/or modify
