@@ -39,16 +39,9 @@ class Fuckindoor extends PluginBase implements Listener
     {
         if ($event->getPlayer()->isSneaking()) {
             if ($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
-                if ($event->getBlock()->getId() === Block::OAK_DOOR_BLOCK ||
-                    $event->getBlock()->getId() === Block::IRON_DOOR_BLOCK ||
-                    $event->getBlock()->getId() === Block::ACACIA_DOOR_BLOCK ||
-                    $event->getBlock()->getId() === Block::WOODEN_DOOR_BLOCK ||
-                    $event->getBlock()->getId() === Block::JUNGLE_DOOR_BLOCK ||
-                    $event->getBlock()->getId() === Block::SPRUCE_DOOR_BLOCK ||
-                    $event->getBlock()->getId() === Block::BIRCH_DOOR_BLOCK ||
-                    $event->getBlock()->getId() === Block::DARK_OAK_DOOR_BLOCK) {
+                if ($event->getBlock() instanceof Door) {
                     $event->getBlock()->getLevel()->addSound(new DoorBumpSound(
-                        new Vector3($event->getBlock()->getX(), $event->getBlock()->getY(), $event->getBlock()->getZ())));
+                        new Vector3($event->getBlock()asVector3())));
                 }
             }
         }
