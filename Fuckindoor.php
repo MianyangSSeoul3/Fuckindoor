@@ -35,15 +35,13 @@ class Fuckindoor extends PluginBase implements Listener
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
-    public function Knock(PlayerInteractEvent $event)
+    public function onPlayerInteractEvent(PlayerInteractEvent $event)
     {
-        if ($event->getPlayer()->isSneaking()) {
-            if ($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
-                if ($event->getBlock() instanceof Door) {
-                    $event->getBlock()->getLevel()->addSound(new DoorBumpSound(
-                        new Vector3($event->getBlock()asVector3())));
-                }
-            }
+        if ($event->getBlock() instanceof Door and $event->getPlayer()->isSneaking()
+//          Eye protection || Eye protection || Eye protection || Eye protection
+            and $event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
+            $event->getBlock()->getLevel()->addSound(new DoorBumpSound(
+                new Vector3($event->getBlock()->asVector3())));
         }
     }
 }
